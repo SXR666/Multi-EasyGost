@@ -468,7 +468,7 @@ function cert() {
     read -p "请输入解析到本机的域名：" domain
     curl https://get.acme.sh | sh
     echo -e "ACME证书申请程序安装成功"
-    if "$HOME"/.acme.sh/acme.sh --issue -d "${domain}" --standalone -k ec-256 --force; then
+    if "$HOME"/.acme.sh/acme.sh --issue -d "${domain}" --standalone -k ec-256 --server letsencrypt; then
       echo -e "SSL 证书生成成功，默认申请高安全性的ECC证书"
       if [ ! -d "$HOME/gost_cert" ]; then
         mkdir $HOME/gost_cert
